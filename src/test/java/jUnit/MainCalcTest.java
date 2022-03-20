@@ -48,7 +48,10 @@ class MainCalcTest {
     @Test
     @DisplayName("checkPlus")
     void checkPlus() {
-        int a = 1, b = 2, expectd = 3;
+        int a = 1;
+        int b = 2;
+        int expectd = 3;
+
         int reslt = calc.plus.apply(a, b);
         assertEquals(expectd, reslt);
 //        fail("test not finished");
@@ -64,7 +67,8 @@ class MainCalcTest {
     @Test
     @DisplayName("devide by 0 Exception")
     void devideExc() {
-        int a = 1, b = 0;
+        int a = 1;
+        int b = 0;
         assertThrows(ArithmeticException.class, () -> calc.devide.apply(a, b));  // 1 если  нет ошибки выдает ошибку!!!  2  не видит  если есть файнели!!
 //        fail("test not finished");
     }
@@ -73,21 +77,24 @@ class MainCalcTest {
     @Test
     @DisplayName("checkMulty just usual")
     void checkMulty() {
-        int x = 1, y = 1, z = 1;
+        int x = 2;
+        int y = 3;
+        int z = 6;
         int rslt = calc.multiply.apply(x, y);
         assertEquals(z, rslt);
 //        fail("test not finished");
     }
 
     @ParameterizedTest()
-    @DisplayName("checkMulty  svrl param")
+    @DisplayName("checkMultyPositive  svrl param")
     //    @ValueSource(ints={{1,1},{1,1},{1,1}})
-    @ValueSource(ints = {1, 1, 1})
+    @ValueSource(ints = {-1, -2, -3})
         //запускается неск раз!!  только один параметр???
     void checkMulty(int x) {
 //    void checkMulty(int x,int y,int z){
-        int rslt = calc.multiply.apply(x, x);
-        assertEquals(x, rslt);
+        int y = -1;
+        int rslt = calc.multiply.apply(x, y);
+        assertEquals(true, rslt > 0);
 //        fail("test not finished");
     }
 
@@ -134,8 +141,6 @@ class MainCalcTest {
     void notFin() {
 //         fail("test not finished");            // выдает как ошибку
     }
-
-
 
 
 }
